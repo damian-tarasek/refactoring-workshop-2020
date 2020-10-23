@@ -215,6 +215,10 @@ Controller::Segment Controller::getNewHead() const
 
 void Controller::receive(std::unique_ptr<Event> e)
 {
+   
+    if(typeid(*e) == typeid(EventT<TimeoutInd> const&)){
+        
+    }
     try {
         handleTimePassed(*dynamic_cast<EventT<TimeoutInd> const&>(*e));
     } catch (std::bad_cast&) {
